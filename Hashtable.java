@@ -1,3 +1,4 @@
+
 public class Hashtable {
 
 ///////////////////////////////////////////////////////////////////////
@@ -9,6 +10,7 @@ public class Hashtable {
 		private String value;
 		private HashNode next;
 		
+		//CONSTRUCTOR
 		public HashNode(String inputKey, String inputValue){
 			this.key = inputKey;
 			this.value = inputValue;
@@ -26,8 +28,8 @@ public class Hashtable {
 	
 	//CONSTRUCTOR
 	public Hashtable() {
-		arr = new HashNode[314527];
-		capacity = 314527;
+		arr = new HashNode[250000];
+		capacity = 250000;
 		size = 0;
 	}
 	
@@ -35,7 +37,7 @@ public class Hashtable {
 
 	public boolean containsKey(String key) {
 		
-		int pos = (Math.abs(key.hashCode()))%(capacity);
+		int pos = ((Math.abs(key.hashCode()))%(capacity));
 		HashNode current = arr[pos];	
 		
 		if(current == null) {
@@ -59,7 +61,7 @@ public class Hashtable {
 			return null;
 		}
 		
-		int pos = (Math.abs(key.hashCode()))%(capacity);
+		int pos = ((Math.abs(key.hashCode()))%(capacity));
 		HashNode current = arr[pos];
 		
 		while(current!=null) {
@@ -75,7 +77,7 @@ public class Hashtable {
 
 	public void put(String key, String value) {
 		
-		int pos = (Math.abs(key.hashCode()))%(capacity);	
+		int pos = ((Math.abs(key.hashCode()))%(capacity));	
 		HashNode head = arr[pos];
 		
 		if(!containsKey(key)) {
@@ -107,7 +109,7 @@ public class Hashtable {
 			throw new Exception();
 		}
 		
-		int pos = (Math.abs(key.hashCode()))%(capacity);
+		int pos = ((Math.abs(key.hashCode()))%(capacity));
 		HashNode current = arr[pos];
 		
 		if(current.key.equals(key)) {
@@ -146,7 +148,7 @@ public class Hashtable {
 				HashNode current = arr[i];
 				
 				while(current!=null) {
-					int pos = (current.key.hashCode())%(capacity);
+					int pos = (Math.abs((current.key.hashCode()))%(capacity));
 					current.next = newArr[i];
 					newArr[i] = current;
 					current = current.next;
