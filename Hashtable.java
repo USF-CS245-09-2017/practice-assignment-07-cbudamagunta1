@@ -34,6 +34,7 @@ public class Hashtable {
 	
 ///////////////////////////////////////////////////////////////////////
 
+	//CHECK IF KEY IS IN THE HASHTABLE
 	public boolean containsKey(String key) {
 		
 		int pos = ((Math.abs(key.hashCode()))%(capacity));
@@ -54,8 +55,10 @@ public class Hashtable {
 
 ///////////////////////////////////////////////////////////////////////
 
+	//GET THE VALUE OF A GIVEN KEY
 	public String get(String key) {
 		
+		//If key is not in the hashtable
 		if(!containsKey(key)) {
 			return null;
 		}
@@ -74,16 +77,19 @@ public class Hashtable {
 
 ///////////////////////////////////////////////////////////////////////
 
+	//ADD A KEY/VALUE PAIR
 	public void put(String key, String value) {
 		
 		int pos = ((Math.abs(key.hashCode()))%(capacity));	
 		HashNode head = arr[pos];
 		
+		//If key is not in the hashtable, add it
 		if(!containsKey(key)) {
 			HashNode current = new HashNode(key, value);
 			current.next = head;
 			arr[pos] = current;
 			size++;
+		//If the key already exists, update the value
 		}else {
 			while(head!=null) {
 				if(head.key.equals(key)) {
@@ -102,8 +108,10 @@ public class Hashtable {
 
 ///////////////////////////////////////////////////////////////////////
 
+	//REMOVE A KEY/VALUE PAIR FROM THE HASHTABLE
 	public String remove(String key) throws Exception{
 
+		//If key is not in the hashtable 
 		if(!containsKey(key)) {
 			throw new Exception();
 		}
@@ -134,7 +142,7 @@ public class Hashtable {
 
 ///////////////////////////////////////////////////////////////////////
 
-	//Grow the array
+	//GROW THE ARRAY
 	private void growArray() {
 		
 		capacity = (arr.length) * 2;
