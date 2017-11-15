@@ -1,4 +1,3 @@
-
 public class Hashtable {
 
 ///////////////////////////////////////////////////////////////////////
@@ -28,8 +27,8 @@ public class Hashtable {
 	
 	//CONSTRUCTOR
 	public Hashtable() {
-		arr = new HashNode[250000];
-		capacity = 250000;
+		arr = new HashNode[314527];
+		capacity = 314527;
 		size = 0;
 	}
 	
